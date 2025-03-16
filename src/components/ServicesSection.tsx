@@ -5,13 +5,25 @@ import { Layers, Code, BarChart, Globe } from 'lucide-react';
 const services = [
   {
     icon: <Layers className="h-10 w-10" />,
-    title: "Brand Strategy",
-    description: "Strategic brand positioning to elevate your market presence with clarity and purpose."
+    title: "Creative & Design Services",
+    description: "Professional design solutions to enhance your brand's visual identity.",
+    bulletPoints: [
+      "Product Photography",
+      "Social Media Post Design (Instagram, Facebook, etc.)",
+      "Flyers, Posters, Banners",
+      "UI/UX Design for Websites and Apps"
+    ]
   },
   {
     icon: <Code className="h-10 w-10" />,
-    title: "Web Development",
-    description: "Bespoke websites and applications combining elegant design with robust functionality."
+    title: "Website & E-commerce Solutions",
+    description: "Comprehensive web solutions to establish and grow your online presence.",
+    bulletPoints: [
+      "E-commerce Website Setup",
+      "Shopify",
+      "SEO Optimization",
+      "And much more"
+    ]
   },
   {
     icon: <BarChart className="h-10 w-10" />,
@@ -59,7 +71,15 @@ const ServicesSection = () => {
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <p className="text-gray-600 mb-4">{service.description}</p>
+              
+              {service.bulletPoints && (
+                <ul className="list-disc pl-5 text-gray-600 space-y-1">
+                  {service.bulletPoints.map((point, i) => (
+                    <li key={i} className="text-sm">{point}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
