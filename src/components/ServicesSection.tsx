@@ -5,30 +5,18 @@ import { Layers, Code, BarChart, Globe } from 'lucide-react';
 const services = [
   {
     icon: <Layers className="h-10 w-10" />,
-    title: "Creative & Design Services",
-    description: "Professional design solutions to enhance your brand's visual identity.",
-    bulletPoints: [
-      "Product Photography",
-      "Social Media Post Design (Instagram, Facebook, etc.)",
-      "Flyers, Posters, Banners",
-      "UI/UX Design for Websites and Apps"
-    ]
+    title: "Digital Marketing",
+    description: "Data-driven strategies to amplify your digital presence and drive meaningful engagement."
   },
   {
     icon: <Code className="h-10 w-10" />,
-    title: "Website & E-commerce Solutions",
-    description: "Comprehensive web solutions to establish and grow your online presence.",
-    bulletPoints: [
-      "E-commerce Website Setup",
-      "Shopify",
-      "SEO Optimization",
-      "And much more"
-    ]
+    title: "Web Development",
+    description: "Bespoke websites and applications combining elegant design with robust functionality."
   },
   {
     icon: <BarChart className="h-10 w-10" />,
-    title: "Digital Marketing",
-    description: "Data-driven strategies to amplify your digital presence and drive meaningful engagement."
+    title: "Brand Strategy",
+    description: "Strategic brand positioning to elevate your market presence with clarity and purpose."
   },
   {
     icon: <Globe className="h-10 w-10" />,
@@ -71,15 +59,7 @@ const ServicesSection = () => {
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
-              
-              {service.bulletPoints && (
-                <ul className="list-disc pl-5 text-gray-600 space-y-1">
-                  {service.bulletPoints.map((point, i) => (
-                    <li key={i} className="text-sm">{point}</li>
-                  ))}
-                </ul>
-              )}
+              <p className="text-gray-600">{service.description}</p>
             </div>
           ))}
         </div>
