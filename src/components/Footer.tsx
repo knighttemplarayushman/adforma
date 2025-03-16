@@ -9,7 +9,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">ADFORMA</h3>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/3caaa40d-4ca7-4742-a979-7b977edd9395.png" 
+                alt="ADFORMA Logo" 
+                className="h-8 w-auto"
+              />
+            </div>
             <p className="text-sm text-gray-600 max-w-xs">
               Minimalist design solutions with maximum impact for forward-thinking brands.
             </p>

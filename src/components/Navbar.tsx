@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -31,9 +30,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link 
           to="/" 
-          className="text-xl font-bold tracking-tighter hover:opacity-80 transition-opacity duration-300"
+          className="hover:opacity-80 transition-opacity duration-300"
         >
-          ADFORMA
+          <img 
+            src="/lovable-uploads/3caaa40d-4ca7-4742-a979-7b977edd9395.png" 
+            alt="ADFORMA Logo" 
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
