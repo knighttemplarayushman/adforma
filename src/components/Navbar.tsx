@@ -19,7 +19,7 @@ const Navbar = () => {
   return <nav className={cn('fixed w-full px-6 md:px-12 py-4 z-50 transition-all duration-300 ease-in-out', scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent')}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
-          <img src="/lovable-uploads/3caaa40d-4ca7-4742-a979-7b977edd9395.png" alt="ADFORMA Logo" className="h-10 w-auto object-fill" />
+          <img src="/lovable-uploads/3caaa40d-4ca7-4742-a979-7b977edd9395.png" alt="ADFORMA Logo" className="h-10 w-auto object-cover" />
         </Link>
 
         {/* Desktop Navigation */}
