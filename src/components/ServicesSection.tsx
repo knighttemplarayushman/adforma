@@ -20,7 +20,7 @@ const services = [
   },
   {
     icon: <Globe className="h-10 w-10" />,
-    title: "UX/UI Design",
+    title: "Creative & Design Services",
     description: "Intuitive and immersive user experiences that resonate with your target audience."
   }
 ];
