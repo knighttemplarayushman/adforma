@@ -1,20 +1,12 @@
-
 import React from 'react';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="border-t border-gray-200 bg-white">
+  return <footer className="border-t border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="mb-4">
-              <img 
-                src="/lovable-uploads/3caaa40d-4ca7-4742-a979-7b977edd9395.png" 
-                alt="ADFORMA Logo" 
-                className="h-8 w-auto"
-              />
+              <img alt="ADFORMA Logo" src="/lovable-uploads/a39865b5-170c-4771-a6a7-f6e20cd4da95.png" className="h-20 w-auto object-cover" />
             </div>
             <p className="text-sm text-gray-600 max-w-xs">
               Minimalist design solutions with maximum impact for forward-thinking brands.
@@ -50,8 +42,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
