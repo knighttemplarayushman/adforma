@@ -22,21 +22,6 @@ const AboutSection = () => {
                 We partner with forward-thinking brands who understand that in a world of excess, restraint makes the strongest statement.
               </p>
             </div>
-            
-            <div className="mt-10 grid grid-cols-3 gap-8">
-              <div>
-                <h3 className="text-3xl font-bold mb-1">10+</h3>
-                <p className="text-sm text-gray-500">Years of Experience</p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold mb-1">75+</h3>
-                <p className="text-sm text-gray-500">Projects Completed</p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold mb-1">40+</h3>
-                <p className="text-sm text-gray-500">Satisfied Clients</p>
-              </div>
-            </div>
           </div>
           
           <div className="order-1 lg:order-2 relative">
