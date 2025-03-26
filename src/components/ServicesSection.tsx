@@ -1,25 +1,25 @@
 
 import React from 'react';
-import { Layers, Code, BarChart, Globe } from 'lucide-react';
+import { TrendingUp, ShoppingCart, MegaphoneIcon, Palette } from 'lucide-react';
 
 const services = [
   {
-    icon: <Layers className="h-10 w-10" />,
+    icon: <MegaphoneIcon className="h-10 w-10" />,
     title: "Digital Marketing",
     description: "Data-driven strategies to amplify your digital presence and drive meaningful engagement."
   },
   {
-    icon: <Code className="h-10 w-10" />,
-    title: "Web Development",
+    icon: <ShoppingCart className="h-10 w-10" />,
+    title: "Website & E-commerce Solutions",
     description: "Bespoke websites and applications combining elegant design with robust functionality."
   },
   {
-    icon: <BarChart className="h-10 w-10" />,
-    title: "Brand Strategy",
+    icon: <TrendingUp className="h-10 w-10" />,
+    title: "Digital Marketing Services",
     description: "Strategic brand positioning to elevate your market presence with clarity and purpose."
   },
   {
-    icon: <Globe className="h-10 w-10" />,
+    icon: <Palette className="h-10 w-10" />,
     title: "Creative & Design Services",
     description: "Intuitive and immersive user experiences that resonate with your target audience."
   }
