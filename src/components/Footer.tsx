@@ -1,3 +1,4 @@
+
 import React from 'react';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +10,7 @@ const Footer = () => {
               <img alt="ADFORMA Logo" src="/lovable-uploads/a39865b5-170c-4771-a6a7-f6e20cd4da95.png" className="h-20 w-auto object-cover" />
             </div>
             <p className="text-sm text-gray-600 max-w-xs">
-              Minimalist design solutions with maximum impact for forward-thinking brands.
+              Simple design solutions with big impact for forward-thinking brands.
             </p>
           </div>
           
@@ -26,10 +27,8 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold uppercase mb-4">Contact</h4>
             <ul className="space-y-2">
-              <li className="text-sm text-gray-600">info@adforma.com</li>
-              <li className="text-sm text-gray-600">+1 (555) 123-4567</li>
-              <li className="text-sm text-gray-600">123 Design Street, Suite 100</li>
-              <li className="text-sm text-gray-600">New York, NY 10001</li>
+              <li className="text-sm text-gray-600">adforma.creative@gmail.com</li>
+              <li className="text-sm text-gray-600">+91 98642 30603</li>
             </ul>
           </div>
         </div>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 
 const ContactSection = () => {
   return (
@@ -12,10 +12,10 @@ const ContactSection = () => {
               Contact Us
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-              Let's create something exceptional together
+              Let's create something amazing together
             </h2>
             <p className="text-gray-600 mb-12 max-w-lg">
-              Ready to elevate your digital presence? Get in touch with us to start a conversation about your next project.
+              Ready to take your brand to the next level? Get in touch with us and let's talk about your next project.
             </p>
             
             <div className="space-y-8">
@@ -23,7 +23,7 @@ const ContactSection = () => {
                 <Mail className="w-6 h-6 mr-4 text-gray-400" />
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-gray-600">info@adforma.com</p>
+                  <p className="text-gray-600">adforma.creative@gmail.com</p>
                 </div>
               </div>
               
@@ -31,15 +31,7 @@ const ContactSection = () => {
                 <Phone className="w-6 h-6 mr-4 text-gray-400" />
                 <div>
                   <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <MapPin className="w-6 h-6 mr-4 text-gray-400" />
-                <div>
-                  <h3 className="font-semibold mb-1">Location</h3>
-                  <p className="text-gray-600">123 Design Street, Suite 100<br />New York, NY 10001</p>
+                  <p className="text-gray-600">+91 98642 30603</p>
                 </div>
               </div>
             </div>

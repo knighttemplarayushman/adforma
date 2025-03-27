@@ -1,3 +1,4 @@
+
 import React from 'react';
 const AboutSection = () => {
   return <section id="about" className="py-24 px-6 md:px-12 bg-gray-50">
@@ -8,20 +9,20 @@ const AboutSection = () => {
               About Us
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-              We believe in the power of refined minimalism
+              We believe in the power of simple design
             </h2>
             <div className="space-y-6 text-gray-600">
               <p>
-                Welcome to Adforma! We are a creative agency specializing in digital marketing, branding, and virtual fashion. Our team helps businesses stand out with eye-catching designs, effective advertisements, and innovative marketing strategies.
+                Hi there! We're Adforma – a creative team that helps businesses look their best online. We specialize in making eye-catching designs, effective ads, and smart marketing plans that help you stand out.
               </p>
               <p>
-                At Adforma, we also bring a new approach to fashion with KATE, our AI fashion model. Through advanced 3D modeling, we offer brands a cost-effective alternative to traditional photoshoots, making high-quality fashion visuals more accessible.
+                One of our special offerings is KATE, our AI fashion model. Instead of expensive photo shoots, we use advanced 3D modeling to create beautiful fashion images at a fraction of the cost.
               </p>
               <p>
-                Whether you need social media ads, branding solutions, or AI-driven fashion campaigns, we've got you covered. Let's bring your vision to life!
+                Whether you need help with social media, branding, or fashion campaigns, we're here to bring your ideas to life in a way that feels true to you.
               </p>
               <p>
-                Contact us today and let's create something amazing together.
+                Let's chat about how we can work together to make something amazing!
               </p>
             </div>
           </div>
