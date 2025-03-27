@@ -13,13 +13,16 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-6 text-gray-600">
               <p>
-                ADFORMA was founded on the principle that great design doesn't shout—it resonates. Inspired by the philosophies of modernist design, we craft digital experiences that strip away the unnecessary to focus on what truly matters.
+                Welcome to Adforma! We are a creative agency specializing in digital marketing, branding, and virtual fashion. Our team helps businesses stand out with eye-catching designs, effective advertisements, and innovative marketing strategies.
               </p>
               <p>
-                Our approach combines strategic thinking with meticulous execution. Every pixel, interaction, and element serves a purpose in creating a cohesive brand narrative that elevates our clients above the digital noise.
+                At Adforma, we also bring a new approach to fashion with KATE, our AI fashion model. Through advanced 3D modeling, we offer brands a cost-effective alternative to traditional photoshoots, making high-quality fashion visuals more accessible.
               </p>
               <p>
-                We partner with forward-thinking brands who understand that in a world of excess, restraint makes the strongest statement.
+                Whether you need social media ads, branding solutions, or AI-driven fashion campaigns, we've got you covered. Let's bring your vision to life!
+              </p>
+              <p>
+                Contact us today and let's create something amazing together.
               </p>
             </div>
           </div>
