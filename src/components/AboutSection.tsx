@@ -1,4 +1,3 @@
-
 import React from 'react';
 const AboutSection = () => {
   return <section id="about" className="py-24 px-6 md:px-12 bg-gray-50">
@@ -29,11 +28,7 @@ const AboutSection = () => {
           
           <div className="order-1 lg:order-2 relative">
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl transform lg:rotate-2 transition-transform duration-500 hover:rotate-0">
-              <img 
-                src="/lovable-uploads/a39865b5-170c-4771-a6a7-f6e20cd4da95.png" 
-                alt="Adforma Creative Design Work" 
-                className="absolute inset-0 w-full h-full object-cover bg-white p-0"
-              />
+              <img alt="Adforma Creative Design Work" src="/lovable-uploads/8d59c753-5a63-44df-9327-d4b5442f8c2f.png" className="absolute inset-0 w-full h-full bg-white p-0 object-contain" />
             </div>
           </div>
         </div>
