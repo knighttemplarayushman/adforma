@@ -30,9 +30,9 @@ const AboutSection = () => {
           <div className="order-1 lg:order-2 relative">
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl transform lg:rotate-2 transition-transform duration-500 hover:rotate-0">
               <img 
-                src="/lovable-uploads/a8203968-bd52-4518-b9c8-ad55475d6878.png" 
-                alt="Adforma Logo" 
-                className="absolute inset-0 w-full h-full object-contain bg-white p-12"
+                src="/lovable-uploads/9119ab45-48bd-4d3d-8b5b-5002c6d4bb17.png" 
+                alt="Adforma Creative Work" 
+                className="absolute inset-0 w-full h-full object-cover bg-white p-0"
               />
             </div>
           </div>
