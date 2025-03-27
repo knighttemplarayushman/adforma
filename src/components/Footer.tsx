@@ -1,7 +1,10 @@
 
 import React from 'react';
+import { Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  
   return <footer className="border-t border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -12,6 +15,25 @@ const Footer = () => {
             <p className="text-sm text-gray-600 max-w-xs">
               Simple design solutions with big impact for forward-thinking brands.
             </p>
+            
+            {/* Social Media Links */}
+            <div className="mt-6 flex space-x-4">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Instagram">
+                <Instagram size={20} />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Facebook">
+                <Facebook size={20} />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Youtube">
+                <Youtube size={20} />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Twitter">
+                <Twitter size={20} />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="LinkedIn">
+                <Linkedin size={20} />
+              </a>
+            </div>
           </div>
           
           <div>
