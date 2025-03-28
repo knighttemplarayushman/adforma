@@ -7,10 +7,12 @@ import AboutSection from '@/components/AboutSection';
 import ShowcaseSection from '@/components/ShowcaseSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import CursorEffect from '@/components/CursorEffect';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
+      <CursorEffect />
       <Navbar />
       <main>
         <HeroSection />
