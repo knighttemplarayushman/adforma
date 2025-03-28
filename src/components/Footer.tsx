@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, Instagram, Linkedin, Youtube, Twitter } from 'lucide-react';
+import { Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,20 +18,11 @@ const Footer = () => {
             
             {/* Social Media Links */}
             <div className="mt-6 flex space-x-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/adforma.creative" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Youtube">
+              <a href="https://youtube.com/@ayushmanthakur__" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Youtube">
                 <Youtube size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} />
               </a>
             </div>
           </div>
@@ -50,7 +41,6 @@ const Footer = () => {
             <h4 className="text-sm font-semibold uppercase mb-4">Contact</h4>
             <ul className="space-y-2">
               <li className="text-sm text-gray-600">adforma.creative@gmail.com</li>
-              <li className="text-sm text-gray-600">+91 98642 30603</li>
             </ul>
           </div>
         </div>
