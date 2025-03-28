@@ -5,7 +5,8 @@ import { Instagram, Youtube } from 'lucide-react';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  return <footer className="border-t border-gray-200 bg-white">
+  return (
+    <footer className="border-t border-gray-200 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -32,7 +33,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><a href="#services" className="text-sm text-gray-600 hover:text-black transition-colors">Services</a></li>
               <li><a href="#about" className="text-sm text-gray-600 hover:text-black transition-colors">About</a></li>
-              <li><a href="#projects" className="text-sm text-gray-600 hover:text-black transition-colors">Projects</a></li>
+              <li><a href="#showcase" className="text-sm text-gray-600 hover:text-black transition-colors">Showcase</a></li>
               <li><a href="#contact" className="text-sm text-gray-600 hover:text-black transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -53,6 +54,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
