@@ -1,27 +1,27 @@
 
 import React from 'react';
-import { TrendingUp, ShoppingCart, MegaphoneIcon, Palette } from 'lucide-react';
+import { TrendingUp, ShoppingCart, UserCircle, Palette } from 'lucide-react';
 
 const services = [
   {
-    icon: <MegaphoneIcon className="h-10 w-10" />,
+    icon: <TrendingUp className="h-10 w-10" />,
     title: "Digital Marketing",
-    description: "Data-driven strategies to amplify your digital presence and drive meaningful engagement."
+    description: "Smart online marketing plans to help your brand get noticed and connect with more customers."
   },
   {
     icon: <ShoppingCart className="h-10 w-10" />,
-    title: "Website & E-commerce Solutions",
-    description: "Bespoke websites and applications combining elegant design with robust functionality."
+    title: "Website & E-commerce",
+    description: "Attractive, easy-to-use websites and online shops that work well on all devices."
   },
   {
-    icon: <TrendingUp className="h-10 w-10" />,
-    title: "Digital Marketing Services",
-    description: "Strategic brand positioning to elevate your market presence with clarity and purpose."
+    icon: <UserCircle className="h-10 w-10" />,
+    title: "Kate - AI Influencer",
+    description: "Meet Kate, our virtual fashion model. Get beautiful fashion photos without expensive photoshoots."
   },
   {
     icon: <Palette className="h-10 w-10" />,
-    title: "Creative & Design Services",
-    description: "Intuitive and immersive user experiences that resonate with your target audience."
+    title: "Creative Design",
+    description: "Eye-catching designs that capture attention and make your brand look great online."
   }
 ];
 
@@ -34,10 +34,10 @@ const ServicesSection = () => {
             Our Services
           </span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Simplicity is the ultimate sophistication
+            Simple solutions with big impact
           </h2>
           <p className="max-w-2xl mx-auto text-gray-600">
-            We focus on delivering streamlined solutions that remove complexity and elevate your brand's digital presence.
+            We help businesses look their best online with easy-to-understand solutions that actually work.
           </p>
         </div>
         
