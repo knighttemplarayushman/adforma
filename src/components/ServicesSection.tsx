@@ -4,24 +4,24 @@ import { TrendingUp, ShoppingCart, UserCircle, Palette } from 'lucide-react';
 
 const services = [
   {
-    icon: <TrendingUp className="h-10 w-10" />,
-    title: "Digital Marketing",
-    description: "Smart online marketing plans to help your brand get noticed and connect with more customers."
-  },
-  {
     icon: <ShoppingCart className="h-10 w-10" />,
     title: "Website & E-commerce",
     description: "Attractive, easy-to-use websites and online shops that work well on all devices."
   },
   {
-    icon: <UserCircle className="h-10 w-10" />,
-    title: "Kate - AI Influencer",
-    description: "Meet Kate, our virtual fashion model. Get beautiful fashion photos without expensive photoshoots."
+    icon: <TrendingUp className="h-10 w-10" />,
+    title: "Digital Marketing",
+    description: "Smart online marketing plans to help your brand get noticed and connect with more customers."
   },
   {
     icon: <Palette className="h-10 w-10" />,
     title: "Creative Design",
     description: "Eye-catching designs that capture attention and make your brand look great online."
+  },
+  {
+    icon: <UserCircle className="h-10 w-10" />,
+    title: "Kate - AI Influencer",
+    description: "Meet Kate, our virtual fashion model. Get beautiful fashion photos without expensive photoshoots."
   }
 ];
 

@@ -1,8 +1,75 @@
 
-import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate form inputs
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Here you would normally make an API call to send the email
+      // For demonstration, we'll simulate an API call with a timeout
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Email to send to: adforma.creative@gmail.com
+      console.log("Sending email to: adforma.creative@gmail.com");
+      console.log("Form data:", { name, email, message });
+      
+      // Reset form
+      setName('');
+      setEmail('');
+      setMessage('');
+      
+      // Show success message
+      toast({
+        title: "Success",
+        description: "Your message has been sent!",
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -26,26 +93,21 @@ const ContactSection = () => {
                   <p className="text-gray-600">adforma.creative@gmail.com</p>
                 </div>
               </div>
-              
-              <div className="flex items-start">
-                <Phone className="w-6 h-6 mr-4 text-gray-400" />
-                <div>
-                  <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-gray-600">+91 98642 30603</p>
-                </div>
-              </div>
             </div>
           </div>
           
           <div className="bg-gray-50 p-8 rounded-lg">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
                 <input
                   type="text"
                   id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                   placeholder="Your name"
+                  required
                 />
               </div>
               
@@ -54,8 +116,11 @@ const ContactSection = () => {
                 <input
                   type="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                   placeholder="your@email.com"
+                  required
                 />
               </div>
               
@@ -64,16 +129,20 @@ const ContactSection = () => {
                 <textarea
                   id="message"
                   rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
                   placeholder="Tell us about your project..."
+                  required
                 ></textarea>
               </div>
               
               <button
                 type="submit"
-                className="w-full bg-black text-white px-6 py-3 rounded-md hover:bg-gray-900 transition-colors"
+                disabled={isSubmitting}
+                className={`w-full bg-black text-white px-6 py-3 rounded-md hover:bg-gray-900 transition-colors ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
