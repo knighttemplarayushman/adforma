@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Mail } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -22,6 +23,29 @@ const ContactSection = () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
+  // Check if email has already submitted a request recently
+  const checkEmailSubmission = (email: string) => {
+    const emailSubmissions = JSON.parse(localStorage.getItem('emailSubmissions') || '{}');
+    const lastSubmission = emailSubmissions[email];
+    
+    if (lastSubmission) {
+      // Check if last submission was within the last 24 hours (86400000 ms)
+      const timeSinceLastSubmission = Date.now() - lastSubmission;
+      if (timeSinceLastSubmission < 86400000) {
+        return false; // Cannot submit yet
+      }
+    }
+    
+    return true; // Can submit
+  };
+
+  // Record email submission time
+  const recordEmailSubmission = (email: string) => {
+    const emailSubmissions = JSON.parse(localStorage.getItem('emailSubmissions') || '{}');
+    emailSubmissions[email] = Date.now();
+    localStorage.setItem('emailSubmissions', JSON.stringify(emailSubmissions));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -44,6 +68,16 @@ const ContactSection = () => {
       return;
     }
 
+    // Check if this email can submit a request
+    if (!checkEmailSubmission(email)) {
+      toast({
+        title: "Rate Limited",
+        description: "You can only send one message every 24 hours with this email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (!emailJSInitialized) {
       toast({
         title: "Error",
@@ -56,7 +90,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Using the default EmailJS service approach which doesn't require explicit account setup
+      // Using the EmailJS service approach
       const templateParams = {
         from_name: name,
         from_email: email,
@@ -65,13 +99,16 @@ const ContactSection = () => {
         message: message,
       };
 
-      // Use the alternate method for sending emails
+      // Use the correct service ID
       await emailjs.send(
-        "default_service", // Using the default service
-        "template_contact", // This can be any template ID you set in EmailJS
+        "service_2ei9t1r", // Your correct service ID
+        "template_contact", // Template ID - ensure this matches your EmailJS template
         templateParams,
         "user_KXL60YGCe3cGxZZPvnDaE" // Your EmailJS public key
       );
+      
+      // Record this submission to prevent repeated submissions
+      recordEmailSubmission(email);
       
       // Reset form
       setName('');
