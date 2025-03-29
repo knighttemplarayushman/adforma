@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Mail } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
@@ -14,7 +13,7 @@ const ContactSection = () => {
 
   useEffect(() => {
     // Initialize EmailJS with your public key
-    // This is a public key, safe to use in client-side code
+    // Note: We need to use a valid public key, this example uses the provided service ID
     emailjs.init("user_KXL60YGCe3cGxZZPvnDaE");
     setEmailJSInitialized(true);
   }, []);
@@ -78,33 +77,37 @@ const ContactSection = () => {
       return;
     }
 
-    if (!emailJSInitialized) {
-      toast({
-        title: "Error",
-        description: "Email service not initialized. Please try again later.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      // Using the EmailJS service approach
-      const templateParams = {
-        from_name: name,
-        from_email: email,
-        to_name: "Adforma Creative",
-        to_email: "adforma.creative@gmail.com",
-        message: message,
-      };
+      // Create a temporary form element to use with emailjs.sendForm
+      const form = document.createElement('form');
+      
+      // Create and append hidden inputs for our data
+      const nameInput = document.createElement('input');
+      nameInput.type = 'hidden';
+      nameInput.name = 'from_name';
+      nameInput.value = name;
+      form.appendChild(nameInput);
+      
+      const emailInput = document.createElement('input');
+      emailInput.type = 'hidden';
+      emailInput.name = 'from_email';
+      emailInput.value = email;
+      form.appendChild(emailInput);
+      
+      const messageInput = document.createElement('input');
+      messageInput.type = 'hidden';
+      messageInput.name = 'message';
+      messageInput.value = message;
+      form.appendChild(messageInput);
 
-      // Use the correct service ID
-      await emailjs.send(
-        "service_2ei9t1r", // Your correct service ID
-        "template_contact", // Template ID - ensure this matches your EmailJS template
-        templateParams,
-        "user_KXL60YGCe3cGxZZPvnDaE" // Your EmailJS public key
+      // Use the sendForm method which is more reliable
+      await emailjs.sendForm(
+        'service_2ei9t1r', // Your service ID
+        'template_contact', // Your template ID
+        form,
+        'user_KXL60YGCe3cGxZZPvnDaE' // Your user ID
       );
       
       // Record this submission to prevent repeated submissions
