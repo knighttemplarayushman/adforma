@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -24,7 +23,7 @@ const Navbar = () => {
     <nav className={cn('fixed w-full px-6 md:px-12 py-4 z-50 transition-all duration-300 ease-in-out', scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent')}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="hover:opacity-80 transition-opacity duration-300">
-          <img alt="ADFORMA Logo" src="/lovable-uploads/9119ab45-48bd-4d3d-8b5b-5002c6d4bb17.png" className="h-20 w-auto object-contain" />
+          <img alt="ADFORMA Logo" src="/assets/images/logo.png" className="h-20 w-auto object-contain" />
         </Link>
 
         {/* Desktop Navigation */}

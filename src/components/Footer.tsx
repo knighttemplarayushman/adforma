@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Instagram, Youtube } from 'lucide-react';
 
@@ -11,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="mb-4">
-              <img alt="ADFORMA Logo" src="/lovable-uploads/a39865b5-170c-4771-a6a7-f6e20cd4da95.png" className="h-20 w-auto object-cover" />
+              <img alt="ADFORMA Logo" src="/assets/images/logo.png" className="h-20 w-auto object-cover" />
             </div>
             <p className="text-sm text-gray-600 max-w-xs">
               Simple design solutions with big impact for forward-thinking brands.

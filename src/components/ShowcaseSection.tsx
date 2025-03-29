@@ -1,17 +1,16 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 
 const ShowcaseSection = () => {
   // Array of Kate images
-  const kateImages = [
-    "/lovable-uploads/a299871a-d86e-46b0-9547-6a1a7642b8bf.png",
-    "/lovable-uploads/09e8f500-7a7a-4182-8d96-0931e0315887.png",
-    "/lovable-uploads/2fed1cde-efe6-4d92-8565-8029f92f2ccd.png",
-    "/lovable-uploads/b05b958a-c37c-4344-a2f6-1635145ce688.png",
-    "/lovable-uploads/2181148b-900d-4897-ad7b-2dbd23db3d7d.png",
-    "/lovable-uploads/0d99aa2a-7237-4a43-97de-00912dd34298.png",
+  const images = [
+    "/assets/images/showcase-1.png",
+    "/assets/images/showcase-2.png",
+    "/assets/images/showcase-3.png",
+    "/assets/images/showcase-4.png",
+    "/assets/images/showcase-5.png",
+    "/assets/images/showcase-6.png",
   ];
 
   return (
@@ -31,7 +30,7 @@ const ShowcaseSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {kateImages.map((image, index) => (
+          {images.map((image, index) => (
             <Card 
               key={index} 
               className="overflow-hidden transition-all duration-300 hover:shadow-lg"
