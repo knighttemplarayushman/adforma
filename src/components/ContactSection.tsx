@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
-import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -9,41 +8,6 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [emailJSInitialized, setEmailJSInitialized] = useState(false);
-
-  useEffect(() => {
-    // Initialize EmailJS with your public key
-    // Note: We need to use a valid public key, this example uses the provided service ID
-    emailjs.init("user_KXL60YGCe3cGxZZPvnDaE");
-    setEmailJSInitialized(true);
-  }, []);
-
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  // Check if email has already submitted a request recently
-  const checkEmailSubmission = (email: string) => {
-    const emailSubmissions = JSON.parse(localStorage.getItem('emailSubmissions') || '{}');
-    const lastSubmission = emailSubmissions[email];
-    
-    if (lastSubmission) {
-      // Check if last submission was within the last 24 hours (86400000 ms)
-      const timeSinceLastSubmission = Date.now() - lastSubmission;
-      if (timeSinceLastSubmission < 86400000) {
-        return false; // Cannot submit yet
-      }
-    }
-    
-    return true; // Can submit
-  };
-
-  // Record email submission time
-  const recordEmailSubmission = (email: string) => {
-    const emailSubmissions = JSON.parse(localStorage.getItem('emailSubmissions') || '{}');
-    emailSubmissions[email] = Date.now();
-    localStorage.setItem('emailSubmissions', JSON.stringify(emailSubmissions));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,83 +22,42 @@ const ContactSection = () => {
       return;
     }
 
-    if (!validateEmail(email)) {
-      toast({
-        title: "Error",
-        description: "Please enter a valid email address",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Check if this email can submit a request
-    if (!checkEmailSubmission(email)) {
-      toast({
-        title: "Rate Limited",
-        description: "You can only send one message every 24 hours with this email address.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      // Create a temporary form element to use with emailjs.sendForm
-      const form = document.createElement('form');
+      const formData = new FormData();
+      formData.append('access_key', 'cd59254b-748b-4024-8bee-db29871c4a8f');
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+      formData.append('subject', 'New Contact Form Submission - Adforma');
       
-      // Create and append hidden inputs for our data
-      const nameInput = document.createElement('input');
-      nameInput.type = 'hidden';
-      nameInput.name = 'from_name';
-      nameInput.value = name;
-      form.appendChild(nameInput);
-      
-      const emailInput = document.createElement('input');
-      emailInput.type = 'hidden';
-      emailInput.name = 'from_email';
-      emailInput.value = email;
-      form.appendChild(emailInput);
-      
-      const messageInput = document.createElement('input');
-      messageInput.type = 'hidden';
-      messageInput.name = 'message';
-      messageInput.value = message;
-      form.appendChild(messageInput);
-
-      // Use the sendForm method which is more reliable
-      await emailjs.sendForm(
-        'service_2ei9t1r', // Your service ID
-        'template_contact', // Your template ID
-        form,
-        'user_KXL60YGCe3cGxZZPvnDaE' // Your user ID
-      );
-      
-      // Record this submission to prevent repeated submissions
-      recordEmailSubmission(email);
-      
-      // Reset form
-      setName('');
-      setEmail('');
-      setMessage('');
-      
-      // Show success message
-      toast({
-        title: "Success",
-        description: "Your message has been sent!",
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
       });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        // Reset form
+        setName('');
+        setEmail('');
+        setMessage('');
+        
+        toast({
+          title: "Success",
+          description: "Your message has been sent!",
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       console.error("Error sending message:", error);
       
-      // More descriptive error message
-      let errorMsg = "Failed to send your message. Please try again.";
-      if (error instanceof Error) {
-        errorMsg = `Error: ${error.message}`;
-      }
-      
       toast({
         title: "Error",
-        description: errorMsg,
+        description: "Failed to send your message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -175,6 +98,7 @@ const ContactSection = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
@@ -188,6 +112,7 @@ const ContactSection = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
@@ -200,6 +125,7 @@ const ContactSection = () => {
                 <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
