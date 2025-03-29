@@ -9,6 +9,29 @@ const ContactSection = () => {
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Check if email has already submitted a request recently
+  const checkEmailSubmission = (email: string) => {
+    const emailSubmissions = JSON.parse(localStorage.getItem('emailSubmissions') || '{}');
+    const lastSubmission = emailSubmissions[email];
+    
+    if (lastSubmission) {
+      // Check if last submission was within the last 30 days (2592000000 ms = 30 days)
+      const timeSinceLastSubmission = Date.now() - lastSubmission;
+      if (timeSinceLastSubmission < 2592000000) {
+        return false; // Cannot submit yet
+      }
+    }
+    
+    return true; // Can submit
+  };
+
+  // Record email submission time
+  const recordEmailSubmission = (email: string) => {
+    const emailSubmissions = JSON.parse(localStorage.getItem('emailSubmissions') || '{}');
+    emailSubmissions[email] = Date.now();
+    localStorage.setItem('emailSubmissions', JSON.stringify(emailSubmissions));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -17,6 +40,16 @@ const ContactSection = () => {
       toast({
         title: "Error",
         description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Check if this email can submit a request
+    if (!checkEmailSubmission(email)) {
+      toast({
+        title: "Rate Limited",
+        description: "Message already delivered",
         variant: "destructive",
       });
       return;
@@ -40,6 +73,9 @@ const ContactSection = () => {
       const data = await response.json();
       
       if (data.success) {
+        // Record this submission to prevent repeated submissions
+        recordEmailSubmission(email);
+        
         // Reset form
         setName('');
         setEmail('');
