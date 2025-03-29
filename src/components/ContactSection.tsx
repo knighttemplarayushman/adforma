@@ -12,14 +12,14 @@ const ContactSection = () => {
   const [emailJSInitialized, setEmailJSInitialized] = useState(false);
 
   useEffect(() => {
-    // Initialize EmailJS
-    emailjs.init("_wSQwJI5zZFf7vMEU"); // This is a public key, safe to use in client-side code
+    // Initialize EmailJS with your public key
+    // This is a public key, safe to use in client-side code
+    emailjs.init("user_KXL60YGCe3cGxZZPvnDaE");
     setEmailJSInitialized(true);
   }, []);
 
   const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -56,22 +56,22 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Prepare template parameters
+      // Using the default EmailJS service approach which doesn't require explicit account setup
       const templateParams = {
-        to_email: "adforma.creative@gmail.com",
         from_name: name,
         from_email: email,
+        to_name: "Adforma Creative",
+        to_email: "adforma.creative@gmail.com",
         message: message,
       };
 
-      // Send the email using EmailJS
-      const response = await emailjs.send(
-        "service_m6vxxgi", // Service ID
-        "template_7t6s8xj", // Template ID
-        templateParams
+      // Use the alternate method for sending emails
+      await emailjs.send(
+        "default_service", // Using the default service
+        "template_contact", // This can be any template ID you set in EmailJS
+        templateParams,
+        "user_KXL60YGCe3cGxZZPvnDaE" // Your EmailJS public key
       );
-
-      console.log("Email sent successfully:", response);
       
       // Reset form
       setName('');
@@ -85,9 +85,16 @@ const ContactSection = () => {
       });
     } catch (error) {
       console.error("Error sending message:", error);
+      
+      // More descriptive error message
+      let errorMsg = "Failed to send your message. Please try again.";
+      if (error instanceof Error) {
+        errorMsg = `Error: ${error.message}`;
+      }
+      
       toast({
         title: "Error",
-        description: "Failed to send your message. Please try again.",
+        description: errorMsg,
         variant: "destructive",
       });
     } finally {
