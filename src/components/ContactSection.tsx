@@ -1,7 +1,7 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -9,6 +9,13 @@ const ContactSection = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailJSInitialized, setEmailJSInitialized] = useState(false);
+
+  useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init("_wSQwJI5zZFf7vMEU"); // This is a public key, safe to use in client-side code
+    setEmailJSInitialized(true);
+  }, []);
 
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,16 +44,34 @@ const ContactSection = () => {
       return;
     }
 
+    if (!emailJSInitialized) {
+      toast({
+        title: "Error",
+        description: "Email service not initialized. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Here you would normally make an API call to send the email
-      // For demonstration, we'll simulate an API call with a timeout
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Email to send to: adforma.creative@gmail.com
-      console.log("Sending email to: adforma.creative@gmail.com");
-      console.log("Form data:", { name, email, message });
+      // Prepare template parameters
+      const templateParams = {
+        to_email: "adforma.creative@gmail.com",
+        from_name: name,
+        from_email: email,
+        message: message,
+      };
+
+      // Send the email using EmailJS
+      const response = await emailjs.send(
+        "service_m6vxxgi", // Service ID
+        "template_7t6s8xj", // Template ID
+        templateParams
+      );
+
+      console.log("Email sent successfully:", response);
       
       // Reset form
       setName('');
