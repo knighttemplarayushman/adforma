@@ -55,10 +55,15 @@ const ShowcaseSection = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-1 text-sm font-medium text-black hover:text-gray-700 cursor-pointer group">
+          <a 
+            href="https://www.instagram.com/katefinity25/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-1 text-sm font-medium text-black hover:text-gray-700 cursor-pointer group"
+          >
             <span>Learn more about Kate</span>
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </div>
+          </a>
           <p className="mt-4 max-w-2xl mx-auto text-gray-600">
             With Kate, your fashion brand can showcase products consistently across all campaigns, while dramatically 
             reducing costs and time spent on traditional photoshoots.
